@@ -1,10 +1,16 @@
 package com.example.ticketsproject.domain;
 import com.example.ticketsproject.domain.enums.Region;
+import org.springframework.data.annotation.Id;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
-public class User {
+public class User implements Serializable {
+    @Serial
+    private static final long SerialVersionUID = 1L;
 
+    @Id
     private Long userId;
     private String name;
     private String email;

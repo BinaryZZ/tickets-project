@@ -1,14 +1,21 @@
 package com.example.ticketsproject.domain;
 
 import com.example.ticketsproject.domain.enums.TicketType;
+import org.springframework.data.annotation.Id;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
-public class Ticket {
+public class Ticket implements Serializable {
+    @Serial
+    private static final long SerialVersionUID = 1L;
+
+    @Id
     private Long ticketId;
     private String createdDate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
     private String lastUpdate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
