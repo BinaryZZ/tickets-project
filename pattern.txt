@@ -1,0 +1,13 @@
+C:\temp\ws-intellij\course\src\main\java\com\binaryz\course
+C:\temp\ws-intellij\workshopmongo\src\main\java\com\binaryz\workshopmongo
+C:\temp\ws-eclipse\Curso_de_Programacao\src\date_Example.java
+
+Ticket Number
+User name
+Task type
+Task to do
+Task observe
+Region
+device | CI
+Notes
+Date
