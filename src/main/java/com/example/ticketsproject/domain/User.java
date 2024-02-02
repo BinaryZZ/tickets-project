@@ -1,7 +1,9 @@
 package com.example.ticketsproject.domain;
 import com.example.ticketsproject.domain.enums.Region;
 
-public class Users {
+import java.util.Objects;
+
+public class User {
 
     private Long userId;
     private String name;
@@ -9,7 +11,10 @@ public class Users {
     private Integer region;
     private Boolean userLevel = false;
 
-    public Users(Long userId, String name, String email, Region region, Boolean userLevel) {
+    public User(){
+    }
+
+    public User(Long userId, String name, String email, Region region, Boolean userLevel) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -62,13 +67,25 @@ public class Users {
     @Override
     public String toString() {
         String userLevelString = (userLevel) ? "VIP" : "Common";
-        return "Users{" +
+        return "User{" +
                 "userId=" + userId +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", region=" + region +
                 ", user level=" + userLevelString +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof User users)) return false;
+        return Objects.equals(getUserId(), users.getUserId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getUserId());
     }
 }
 

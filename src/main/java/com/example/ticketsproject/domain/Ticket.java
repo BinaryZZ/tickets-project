@@ -6,21 +6,23 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Objects;
 
 public class Ticket {
-
-    ZoneId newTimeZone = ZoneId.of("America/Sao_Paulo");
     private Long ticketId;
     private String createdDate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
     private String lastUpdate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
     private String number;
-    private Users user;
+    private User user;
     private Integer ticketType;
     private String task;
     private String observation;
     private String note;
 
-    public Ticket(Long ticketId, String number, Users user, TicketType ticketType, String task, String observation, String note, String createdDate, String lastUpdate) {
+    public Ticket(){
+    }
+
+    public Ticket(Long ticketId, String number, User user, TicketType ticketType, String task, String observation, String note, String createdDate, String lastUpdate) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
@@ -32,7 +34,7 @@ public class Ticket {
         this.lastUpdate = lastUpdate;
     }
 
-    public Ticket(Long ticketId, String number, Users user, TicketType ticketType, String task, String observation, String note) {
+    public Ticket(Long ticketId, String number, User user, TicketType ticketType, String task, String observation, String note) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
@@ -42,7 +44,7 @@ public class Ticket {
         this.note = note;
     }
 
-    public Ticket(Long ticketId, String number, Users user, TicketType ticketType, String task, String observation, String note, String createdDate) {
+    public Ticket(Long ticketId, String number, User user, TicketType ticketType, String task, String observation, String note, String createdDate) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
@@ -69,11 +71,11 @@ public class Ticket {
         this.number = number;
     }
 
-    public Users getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Users user) {
+    public void setUser(User user) {
         this.user = user;
     }
 
@@ -101,11 +103,11 @@ public class Ticket {
         this.note = note;
     }
 
-    public String getInstant() {
+    public String getCreatedDate() {
         return createdDate;
     }
 
-    public void setInstant(String createdDate) {
+    public void setCreatedDate(String createdDate) {
         this.createdDate = createdDate;
     }
 
@@ -149,5 +151,17 @@ public class Ticket {
                 ", observation='" + observation + '\'' +
                 ", note='" + note + '\'' +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Ticket ticket)) return false;
+        return Objects.equals(getTicketId(), ticket.getTicketId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTicketId());
     }
 }
