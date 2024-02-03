@@ -1,7 +1,7 @@
 package com.example.ticketsproject.domain.DTO;
 
 import com.example.ticketsproject.domain.User;
-import com.example.ticketsproject.domain.enums.Region;
+import com.example.ticketsproject.domain.enums.UserRegion;
 
 public class UserDTO {
     private Long userId;
@@ -45,8 +45,8 @@ public class UserDTO {
         this.email = email;
     }
 
-    public Integer getRegion() {
-        return region;
+    public UserRegion getRegion() {
+        return UserRegion.valueOf(region);
     }
 
     public void setRegion(Integer region) {

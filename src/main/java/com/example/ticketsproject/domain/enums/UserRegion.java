@@ -1,6 +1,6 @@
 package com.example.ticketsproject.domain.enums;
 
-public enum Region {
+public enum UserRegion {
     BR(1),
     EUA(2),
     PT(3),
@@ -9,7 +9,7 @@ public enum Region {
 
     private int regionCode;
 
-    private Region(int regionCode) {
+    private UserRegion(int regionCode) {
         this.regionCode = regionCode;
     }
 
@@ -17,13 +17,13 @@ public enum Region {
         return regionCode;
     }
 
-    public static Region valueOf(int regionCode) {
-        for (Region value : Region.values()) {
+    public static UserRegion valueOf(int regionCode) {
+        for (UserRegion value : UserRegion.values()) {
             if (value.getRegionCode() == regionCode) {
                 return value;
             }
         }
-        throw new IllegalArgumentException("Invalid Region Code!");
+        throw new IllegalArgumentException("Invalid UserRegion Code!");
 
     }
 }

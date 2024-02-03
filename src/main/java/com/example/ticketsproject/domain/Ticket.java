@@ -1,5 +1,7 @@
 package com.example.ticketsproject.domain;
 
+import com.example.ticketsproject.domain.enums.TicketStatus;
+import com.example.ticketsproject.domain.enums.TicketTask;
 import com.example.ticketsproject.domain.enums.TicketType;
 import org.springframework.data.annotation.Id;
 
@@ -21,42 +23,46 @@ public class Ticket implements Serializable {
     private String lastUpdate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
     private String number;
     private User user;
+    private Integer ticketStatus;
     private Integer ticketType;
-    private String task;
+    private Integer task;
     private String observation;
     private String note;
 
     public Ticket(){
     }
 
-    public Ticket(Long ticketId, String number, User user, TicketType ticketType, String task, String observation, String note, String createdDate, String lastUpdate) {
+    public Ticket(Long ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note, String createdDate, String lastUpdate) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
+        setTicketStatus(ticketStatus);
         setTicketType(ticketType);
-        this.task = task;
+        setTask(task);
         this.observation = observation;
         this.note = note;
         this.createdDate = createdDate;
         this.lastUpdate = lastUpdate;
     }
 
-    public Ticket(Long ticketId, String number, User user, TicketType ticketType, String task, String observation, String note) {
+    public Ticket(Long ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
+        setTicketStatus(ticketStatus);
         setTicketType(ticketType);
-        this.task = task;
+        setTask(task);
         this.observation = observation;
         this.note = note;
     }
 
-    public Ticket(Long ticketId, String number, User user, TicketType ticketType, String task, String observation, String note, String createdDate) {
+    public Ticket(Long ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note, String createdDate) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
+        setTicketStatus(ticketStatus);
         setTicketType(ticketType);
-        this.task = task;
+        setTask(task);
         this.observation = observation;
         this.note = note;
         this.createdDate = createdDate;
@@ -86,12 +92,14 @@ public class Ticket implements Serializable {
         this.user = user;
     }
 
-    public String getTask() {
-        return task;
+    public TicketTask getTask() {
+        return TicketTask.valueOf(task);
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    public void setTask(TicketTask task) {
+        if (task != null) {
+            this.task = task.getTaskCode();
+        }
     }
 
     public String getObservation() {
@@ -126,13 +134,23 @@ public class Ticket implements Serializable {
         this.lastUpdate = lastUpdate;
     }
 
-    public TicketType getTicketType(){
+    public TicketType getTicketType() {
         return TicketType.valueOf(ticketType);
     }
 
     public void setTicketType(TicketType ticketType){
         if (ticketType != null) {
             this.ticketType = ticketType.getTicketCode();
+        }
+    }
+
+    public TicketStatus getTicketStatus(){
+        return TicketStatus.valueOf(ticketStatus);
+    }
+
+    public void setTicketStatus(TicketStatus ticketStatus){
+        if (ticketStatus != null) {
+            this.ticketStatus = ticketStatus.getTicketStatusCode();
         }
     }
 

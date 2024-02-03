@@ -2,7 +2,7 @@ package com.example.ticketsproject;
 
 import com.example.ticketsproject.domain.Ticket;
 import com.example.ticketsproject.domain.User;
-import com.example.ticketsproject.domain.enums.Region;
+import com.example.ticketsproject.domain.enums.UserRegion;
 import com.example.ticketsproject.domain.enums.TicketType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +15,7 @@ public class Test {
 
     @BeforeEach
     public void createUserTest(){
-        user = new User(null,"Joaozin", "Joaozindamotocicleta@gmail.com", Region.BR, false);
+        user = new User(null,"Joaozin", "Joaozindamotocicleta@gmail.com", UserRegion.BR, false);
     }
 
     @org.junit.jupiter.api.Test

@@ -2,6 +2,8 @@ package com.example.ticketsproject.domain.DTO;
 
 import com.example.ticketsproject.domain.Ticket;
 import com.example.ticketsproject.domain.User;
+import com.example.ticketsproject.domain.enums.TicketStatus;
+import com.example.ticketsproject.domain.enums.TicketTask;
 
 import java.time.Instant;
 
@@ -12,8 +14,9 @@ public class TicketDTO {
     private String lastUpdate;
     private String number;
     private User user;
+    private Integer ticketStatus;
     private Integer ticketType;
-    private String task;
+    private Integer task;
     private String observation;
     private String note;
 
@@ -26,8 +29,9 @@ public class TicketDTO {
         lastUpdate = ticket.getLastUpdate();
         number = ticket.getNumber();
         user = ticket.getUser();
+        ticketStatus = ticket.getTicketStatus().getTicketStatusCode();
         ticketType = ticket.getTicketType().getTicketCode();
-        task = ticket.getTask();
+        task = ticket.getTask().getTaskCode();
         observation = ticket.getObservation();
         note = ticket.getNote();
 
@@ -81,12 +85,24 @@ public class TicketDTO {
         this.ticketType = ticketType;
     }
 
-    public String getTask() {
-        return task;
+    public TicketTask getTask() {
+        return TicketTask.valueOf(task);
     }
 
-    public void setTask(String task) {
-        this.task = task;
+    public void setTask(TicketTask task) {
+        if (task != null){
+            this.task = task.getTaskCode();
+        }
+    }
+
+    public TicketStatus getTicketStatus() {
+        return TicketStatus.valueOf(ticketStatus);
+    }
+
+    public void setTask(TicketStatus ticketStatus) {
+        if (ticketStatus != null){
+            this.ticketStatus = ticketStatus.getTicketStatusCode();
+        }
     }
 
     public String getObservation() {
