@@ -5,19 +5,19 @@ public enum TicketType {
     RQT(2),
     CHT(3);
 
-    private int ticketCode;
+    private int ticketTypeCode;
 
-    private TicketType(int ticketCode) {
-        this.ticketCode = ticketCode;
+    private TicketType(int ticketTypeCode) {
+        this.ticketTypeCode = ticketTypeCode;
     }
 
     public int getTicketCode() {
-        return ticketCode;
+        return ticketTypeCode;
     }
 
-    public static TicketType valueOf(int ticketCode) {
+    public static TicketType valueOf(int ticketTypeCode) {
         for (TicketType value : TicketType.values()) {
-            if (value.getTicketCode() == ticketCode) {
+            if (value.getTicketCode() == ticketTypeCode) {
                 return value;
             }
         }

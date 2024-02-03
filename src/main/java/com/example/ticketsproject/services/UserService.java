@@ -3,7 +3,6 @@ package com.example.ticketsproject.services;
 import com.example.ticketsproject.domain.DTO.UserDTO;
 import com.example.ticketsproject.domain.User;
 import com.example.ticketsproject.repository.UserRepository;
-import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +19,7 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public User findById(Long id){
+    public User findById(String id){
         Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new RuntimeException("Object was not found"));
     }
@@ -29,7 +28,7 @@ public class UserService {
         return userRepository.insert(user);
     }
 
-    public void delete(Long id){
+    public void delete(String id){
         findById(id);
         userRepository.deleteById(id);
     }

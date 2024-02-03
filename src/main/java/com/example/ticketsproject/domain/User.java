@@ -11,7 +11,7 @@ public class User implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     @Id
-    private Long userId;
+    private String userId;
     private String name;
     private String email;
     private Integer region;
@@ -20,7 +20,7 @@ public class User implements Serializable {
     public User(){
     }
 
-    public User(Long userId, String name, String email, UserRegion region, Boolean userLevel) {
+    public User(String userId, String name, String email, UserRegion region, Boolean userLevel) {
         this.userId = userId;
         this.name = name;
         this.email = email;
@@ -28,11 +28,11 @@ public class User implements Serializable {
         this.userLevel = userLevel;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

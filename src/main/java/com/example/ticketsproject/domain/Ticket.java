@@ -18,7 +18,7 @@ public class Ticket implements Serializable {
     private static final long SerialVersionUID = 1L;
 
     @Id
-    private Long ticketId;
+    private String ticketId;
     private String createdDate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
     private String lastUpdate = dateToBrTimeZoneAndRemoveMilliSeconds(Instant.now());
     private String number;
@@ -32,7 +32,7 @@ public class Ticket implements Serializable {
     public Ticket(){
     }
 
-    public Ticket(Long ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note, String createdDate, String lastUpdate) {
+    public Ticket(String ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note, String createdDate, String lastUpdate) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
@@ -45,7 +45,7 @@ public class Ticket implements Serializable {
         this.lastUpdate = lastUpdate;
     }
 
-    public Ticket(Long ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note) {
+    public Ticket(String ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
@@ -56,7 +56,7 @@ public class Ticket implements Serializable {
         this.note = note;
     }
 
-    public Ticket(Long ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note, String createdDate) {
+    public Ticket(String ticketId, String number, User user, TicketType ticketType, TicketStatus ticketStatus, TicketTask task, String observation, String note, String createdDate) {
         this.ticketId = ticketId;
         this.number = number;
         this.user = user;
@@ -68,11 +68,11 @@ public class Ticket implements Serializable {
         this.createdDate = createdDate;
     }
 
-    public Long getTicketId() {
+    public String getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Long ticketId) {
+    public void setTicketId(String ticketId) {
         this.ticketId = ticketId;
     }
 

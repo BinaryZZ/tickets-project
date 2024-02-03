@@ -4,12 +4,13 @@ import com.example.ticketsproject.domain.Ticket;
 import com.example.ticketsproject.domain.User;
 import com.example.ticketsproject.domain.enums.TicketStatus;
 import com.example.ticketsproject.domain.enums.TicketTask;
+import com.example.ticketsproject.domain.enums.TicketType;
 
 import java.time.Instant;
 
 public class TicketDTO {
 
-    private Long ticketId;
+    private String ticketId;
     private String createdDate;
     private String lastUpdate;
     private String number;
@@ -37,11 +38,11 @@ public class TicketDTO {
 
     }
 
-    public Long getTicketId() {
+    public String getTicketId() {
         return ticketId;
     }
 
-    public void setTicketId(Long ticketId) {
+    public void setTicketId(String ticketId) {
         this.ticketId = ticketId;
     }
 
@@ -77,12 +78,14 @@ public class TicketDTO {
         this.user = user;
     }
 
-    public Integer getTicketType() {
-        return ticketType;
+    public TicketType getTicketType() {
+        return TicketType.valueOf(ticketType);
     }
 
-    public void setTicketType(Integer ticketType) {
-        this.ticketType = ticketType;
+    public void setTicketType(TicketType ticketType){
+        if (ticketType != null) {
+            this.ticketType = ticketType.getTicketCode();
+        }
     }
 
     public TicketTask getTask() {

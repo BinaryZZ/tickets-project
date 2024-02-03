@@ -4,7 +4,7 @@ import com.example.ticketsproject.domain.User;
 import com.example.ticketsproject.domain.enums.UserRegion;
 
 public class UserDTO {
-    private Long userId;
+    private String userId;
     private String name;
     private String email;
     private Integer region;
@@ -21,11 +21,11 @@ public class UserDTO {
         userLevel = user.getUserLevel();
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
