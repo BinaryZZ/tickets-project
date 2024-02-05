@@ -13,7 +13,7 @@ public class TicketDTO {
     private String ticketId;
     private String createdDate;
     private String lastUpdate;
-    private String number;
+    private Long number;
     private User user;
     private Integer ticketStatus;
     private Integer ticketType;
@@ -62,11 +62,11 @@ public class TicketDTO {
         this.lastUpdate = lastUpdate;
     }
 
-    public String getNumber() {
+    public Long getNumber() {
         return number;
     }
 
-    public void setNumber(String number) {
+    public void setNumber(Long number) {
         this.number = number;
     }
 

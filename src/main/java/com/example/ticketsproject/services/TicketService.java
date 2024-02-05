@@ -16,6 +16,9 @@ public class TicketService {
     @Autowired
     private TicketRepository ticketRepository;
 
+    @Autowired
+    private SequenceService sequenceService;
+
     public List<Ticket> findAll() {
         return ticketRepository.findAll();
     }
@@ -25,8 +28,8 @@ public class TicketService {
         return ticket.orElseThrow(() -> new RuntimeException("Object was not found"));
     }
 
-    public Ticket insert (Ticket ticker){
-        return ticketRepository.insert(ticker);
+    public Ticket insert (Ticket ticket){
+        return ticketRepository.insert(ticket);
     }
 
     public void delete(String id){
@@ -54,6 +57,7 @@ public class TicketService {
     }
 
     public Ticket fromDTO(TicketDTO ticketDTO){
+        System.out.println(ticketDTO.getNumber());
         return new Ticket(ticketDTO.getTicketId(), ticketDTO.getNumber(), ticketDTO.getUser(), ticketDTO.getTicketType(), ticketDTO.getTicketStatus(), ticketDTO.getTask(), ticketDTO.getObservation(), ticketDTO.getNote(), ticketDTO.getCreatedDate(), ticketDTO.getLastUpdate());
     }
 

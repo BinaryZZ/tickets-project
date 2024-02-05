@@ -3,8 +3,10 @@ package com.example.ticketsproject.resources;
 
 import com.example.ticketsproject.domain.DTO.TicketDTO;
 import com.example.ticketsproject.domain.Ticket;
+import com.example.ticketsproject.services.SequenceService;
 import com.example.ticketsproject.services.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.repository.Update;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -19,6 +21,7 @@ public class TicketResource {
 
     @Autowired
     private TicketService ticketService;
+
 
     @GetMapping
     public ResponseEntity<List<TicketDTO>> findAll(){
@@ -39,4 +42,5 @@ public class TicketResource {
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(ticket.getTicketId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+
 }
