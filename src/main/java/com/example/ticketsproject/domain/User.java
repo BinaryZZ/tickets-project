@@ -2,6 +2,7 @@ package com.example.ticketsproject.domain;
 
 import com.example.ticketsproject.domain.enums.UserRegion;
 import com.mongodb.lang.NonNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.data.annotation.Id;
 
 import java.io.Serial;
@@ -14,10 +15,13 @@ public class User implements Serializable {
 
     @Id
     private String userId;
-
+    @NotNull
     private String name;
+    @NotNull
     private String email;
+    @NotNull
     private Integer region;
+    @NotNull
     private Boolean userLevel = false;
 
     public User() {

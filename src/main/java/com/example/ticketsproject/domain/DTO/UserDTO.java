@@ -2,12 +2,18 @@ package com.example.ticketsproject.domain.DTO;
 
 import com.example.ticketsproject.domain.User;
 import com.example.ticketsproject.domain.enums.UserRegion;
+import jakarta.validation.constraints.NotNull;
 
 public class UserDTO {
+
     private String userId;
+    @NotNull
     private String name;
+    @NotNull
     private String email;
+    @NotNull
     private Integer region;
+    @NotNull
     private Boolean userLevel;
 
     public UserDTO(){

@@ -35,22 +35,18 @@ public class UserService {
     }
 
     public void update(User user, UserDTO userDTO){
-        //User newUser = findById(user.getUserId());
         updateData(user, userDTO);
         userRepository.save(user);
     }
 
     private void updateData(User user, UserDTO userDTO){
-        if (userDTO.getName() != null) { user.setName(userDTO.getName());};
-        if (userDTO.getEmail() != null) { user.setEmail(userDTO.getEmail());};
-        if (userDTO.getRegion() != null) { user.setRegion(userDTO.getRegion());};
-        if (userDTO.getUserLevel() != null) { user.setUserLevel(userDTO.getUserLevel());};
+        user.setName(userDTO.getName());
+        user.setEmail(userDTO.getEmail());
+        user.setRegion(userDTO.getRegion());
+        user.setUserLevel(userDTO.getUserLevel());
     }
 
     public User fromDTO(UserDTO userDTO){
-        if (userDTO.getName() == null || userDTO.getEmail() == null || userDTO.getRegion() == null || userDTO.getUserLevel() == null){
-            throw new ObjectNotFoundException("Some User value is missing");
-        }
         return (new User(userDTO.getUserId(), userDTO.getName(), userDTO.getEmail(), userDTO.getRegion(), userDTO.getUserLevel()));
     }
 }
