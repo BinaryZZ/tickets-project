@@ -1,4 +1,5 @@
 package com.example.ticketsproject.domain;
+
 import com.example.ticketsproject.domain.enums.UserRegion;
 import org.springframework.data.annotation.Id;
 
@@ -17,7 +18,7 @@ public class User implements Serializable {
     private Integer region;
     private Boolean userLevel = false;
 
-    public User(){
+    public User() {
     }
 
     public User(String userId, String name, String email, UserRegion region, Boolean userLevel) {
@@ -60,11 +61,15 @@ public class User implements Serializable {
         this.userLevel = userLevel;
     }
 
-    public UserRegion getRegion(){
-        return UserRegion.valueOf(region);
+    public UserRegion getRegion() {
+        if (region != null) {
+            return UserRegion.valueOf(region);
+        } else {
+            return null;
+        }
     }
 
-    public void setRegion(UserRegion region){
+    public void setRegion(UserRegion region) {
         if (region != null) {
             this.region = region.getRegionCode();
         }

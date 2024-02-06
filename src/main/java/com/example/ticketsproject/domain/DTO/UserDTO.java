@@ -46,11 +46,17 @@ public class UserDTO {
     }
 
     public UserRegion getRegion() {
-        return UserRegion.valueOf(region);
+        if (region != null){
+            return UserRegion.valueOf(region);
+        } else {
+            return null;
+        }
     }
 
-    public void setRegion(Integer region) {
-        this.region = region;
+    public void setRegion(UserRegion region){
+        if (region != null) {
+            this.region = region.getRegionCode();
+        }
     }
 
     public Boolean getUserLevel() {
@@ -59,5 +65,16 @@ public class UserDTO {
 
     public void setUserLevel(Boolean userLevel) {
         this.userLevel = userLevel;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDTO{" +
+                "userId='" + userId + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", region=" + region +
+                ", userLevel=" + userLevel +
+                '}';
     }
 }

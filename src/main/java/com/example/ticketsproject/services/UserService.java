@@ -33,17 +33,17 @@ public class UserService {
         userRepository.deleteById(id);
     }
 
-    public User update(User user){
-        User newUser = findById(user.getUserId());
-        updateData(newUser, user);
-        return userRepository.save(newUser);
+    public void update(User user, UserDTO userDTO){
+        //User newUser = findById(user.getUserId());
+        updateData(user, userDTO);
+        userRepository.save(user);
     }
 
-    private void updateData(User newUser, User user){
-        newUser.setName(user.getName());
-        newUser.setEmail(user.getEmail());
-        newUser.setRegion(user.getRegion());
-        newUser.setUserLevel(user.getUserLevel());
+    private void updateData(User user, UserDTO userDTO){
+        if (userDTO.getName() != null) { user.setName(userDTO.getName());};
+        if (userDTO.getEmail() != null) { user.setEmail(userDTO.getEmail());};
+        if (userDTO.getRegion() != null) { user.setRegion(userDTO.getRegion());};
+        if (userDTO.getUserLevel() != null) { user.setUserLevel(userDTO.getUserLevel());};
     }
 
     public User fromDTO(UserDTO userDTO){

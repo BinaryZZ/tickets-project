@@ -33,8 +33,9 @@ public class TicketService {
     }
 
     public void delete(String id){
-        findById(id);
-        ticketRepository.deleteById(id);
+        if (findById(id) != null){
+            ticketRepository.deleteById(id);
+        }
     }
 
     public Ticket update(Ticket ticket){
@@ -57,8 +58,7 @@ public class TicketService {
     }
 
     public Ticket fromDTO(TicketDTO ticketDTO){
-        System.out.println(ticketDTO.getNumber());
-        return new Ticket(ticketDTO.getTicketId(), ticketDTO.getNumber(), ticketDTO.getUser(), ticketDTO.getTicketType(), ticketDTO.getTicketStatus(), ticketDTO.getTask(), ticketDTO.getObservation(), ticketDTO.getNote(), ticketDTO.getCreatedDate(), ticketDTO.getLastUpdate());
+        return new Ticket(ticketDTO.getTicketId(), sequenceService.generateSequence("sequence"), ticketDTO.getUser(), ticketDTO.getTicketType(), ticketDTO.getTicketStatus(), ticketDTO.getTask(), ticketDTO.getObservation(), ticketDTO.getNote(), ticketDTO.getCreatedDate(), ticketDTO.getLastUpdate());
     }
 
 }
