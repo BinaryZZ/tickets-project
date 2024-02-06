@@ -3,6 +3,7 @@ package com.example.ticketsproject.services;
 import com.example.ticketsproject.domain.DTO.UserDTO;
 import com.example.ticketsproject.domain.User;
 import com.example.ticketsproject.repository.UserRepository;
+import com.example.ticketsproject.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,7 @@ public class UserService {
 
     public User findById(String id){
         Optional<User> user = userRepository.findById(id);
-        return user.orElseThrow(() -> new RuntimeException("Object was not found"));
+        return user.orElseThrow(() -> new ObjectNotFoundException("User was not found!"));
     }
 
     public User insert (User user){
@@ -47,6 +48,9 @@ public class UserService {
     }
 
     public User fromDTO(UserDTO userDTO){
-        return new User(userDTO.getUserId(), userDTO.getName(), userDTO.getEmail(), userDTO.getRegion(), userDTO.getUserLevel());
+        if (userDTO.getName() == null || userDTO.getEmail() == null || userDTO.getRegion() == null || userDTO.getUserLevel() == null){
+            throw new ObjectNotFoundException("Some User value is missing");
+        }
+        return (new User(userDTO.getUserId(), userDTO.getName(), userDTO.getEmail(), userDTO.getRegion(), userDTO.getUserLevel()));
     }
 }
